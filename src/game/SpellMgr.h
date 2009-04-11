@@ -841,6 +841,15 @@ class SpellMgr
             return SpellAreaForAreaMapBounds(mSpellAreaForAreaMap.lower_bound(area_id),mSpellAreaForAreaMap.upper_bound(area_id));
         }
 
+        PetLevelupSpellSet const* GetWarlockPetLevelupSpellList(uint32 petFamily) const
+        {
+            PetLevelupSpellMap::const_iterator itr = mWarlockPetLevelupSpellMap.find(petFamily);
+            if(itr != mWarlockPetLevelupSpellMap.end())
+                return &itr->second;
+            else
+                return NULL;
+        }
+
     // Modifiers
     public:
         static SpellMgr& Instance();
@@ -859,7 +868,8 @@ class SpellMgr
         void LoadSkillLineAbilityMap();
         void LoadSpellPetAuras();
         void LoadPetLevelupSpellMap();
-        void LoadSpellAreas();
+        void LoadWarlockPetLevelupSpellMap();
+		void LoadSpellAreas();
 
     private:
         SpellScriptTarget  mSpellScriptTarget;
@@ -875,6 +885,7 @@ class SpellMgr
         SkillLineAbilityMap mSkillLineAbilityMap;
         SpellPetAuraMap     mSpellPetAuraMap;
         PetLevelupSpellMap  mPetLevelupSpellMap;
+        PetLevelupSpellMap  mWarlockPetLevelupSpellMap;
         SpellAreaMap         mSpellAreaMap;
         SpellAreaForQuestMap mSpellAreaForQuestMap;
         SpellAreaForQuestMap mSpellAreaForActiveQuestMap;

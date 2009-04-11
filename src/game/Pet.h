@@ -192,6 +192,7 @@ class Pet : public Creature
         bool learnSpell(uint32 spell_id);
         void learnSpellHighRank(uint32 spellid);
         void learnLevelupSpells();
+        void learnWarlockLevelupSpells();
         bool unlearnSpell(uint32 spell_id);
         bool removeSpell(uint32 spell_id);
         bool _removeSpell(uint32 spell_id);
